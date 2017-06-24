@@ -1,0 +1,6 @@
+security:
+    firewalls:
+        pmanager:
+            pattern:   ^/pmanager/(submit|success)
+            provider:  chain_provider
+            anonymous: true

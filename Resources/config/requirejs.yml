@@ -1,0 +1,8 @@
+config:
+    paths:
+        'pmanger/js/pdftemplate/variable/model': 'bundles/ibnabpmanager/js/pmanger/variable/model.js'
+        'pmanger/js/pdftemplate/variable/view': 'bundles/ibnabpmanager/js/pmanger/variable/view.js'
+        #'pmanger/js/pdftemplate/components/email-variable-component': 'bundles/ibnabpmanager/js/components/email-variable-component.js'
+        #'pmanger/js/pdftemplate/views/email-variable-model': 'bundles/ibnabpmanager/js/models/email-variable-model.js'
+        #'pmanger/js/pdftemplate/models/email-variable-view': 'bundles/ibnabpmanager/js/views/email-variable-view.js'
+        'oro/datagrid/action/getpdf-action': 'bundles/ibnabpmanager/js/datagrid/action/getpdf-action.js'

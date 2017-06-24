@@ -1,0 +1,17 @@
+search:
+    Ibnab\Bundle\PmanagerBundle\Entity\PDFTemplate:
+        alias: ibnab_pmanager_pdftemplate
+        label: Template
+        search_template: IbnabPmanagerBundle:Default:searchResult.html.twig
+        route:
+            name: pmanager_defaut_view
+            parameters:
+                entityName: entityName
+                name: name
+                id: id
+        title_fields: [name]
+        fields:
+            -
+                name:                   name
+                target_type:            text
+                target_fields:          [name]

@@ -1,0 +1,5 @@
+assets:
+    css:
+        frontend:
+            - 'bundles/ibnabpmanager/css/frontend/custom.css'
+

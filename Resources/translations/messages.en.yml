@@ -1,0 +1,184 @@
+ibnab:
+    pmanager:
+        system_configuration:
+            groups:
+                settings:
+                    title: PDF Manager Setting
+                view:
+                    title: Backend Setting
+                frontend:
+                    title: Frontend Setting
+            fields:
+                allow:
+                    label: Allow(Show/Hide)
+                logo:
+                    label: Header Logo
+                logosize:
+                    label: Header Logo Width
+                titleheader:
+                    label: Header Title
+                textheader:
+                    label: Header Text
+                marginheader:
+                    label: Header Margin
+                marginfooter:
+                    label: Footer Margin
+                enablemultitemplate:
+                    label: Allow Multi Template Choices
+                    yes:
+                        label: yes
+                    no:
+                        label: no
+                defaultordertemplate:
+                    label: Default Order Template
+                defaultquotetemplate:
+                    label: Default Quote Template
+                marketing: Allow in Marketing
+                activities: Allow in Activities
+        entity_plural_label:        PDF Manager
+        entity_label:               PDF Manager
+        entity_template_plural_label: Templates
+        variable_title: '{{ variable_label }}. Click to insert variable or drag it.'
+        reference_title: '{{ variable_label }}. Click to go to related variables.'
+        success_message:
+            successForm: PDF Form has been submitted successfully
+            failedForm: PDF Form has not submitted plz resend again
+        grid_action:
+            getpdf_label: Get PDF
+        dialog:
+            title : Export PDF   
+        template:
+            form:
+                choose: Choose template
+        catalogpdf:
+            entity_plural_label:   Catalog PDF   
+        producttemplate:
+            entity_plural_label:   Product Templates  
+            entity_label: Product Template
+            name:
+                label: Template name  
+            description:
+                label: Description 
+            round:
+                label: Round
+            background:
+                label: Background
+            border:
+                label: Border
+            width:
+                label: Width
+            height:
+                label: Height
+            css:
+                label: Additional CSS
+            layout:
+                label: Product Layout
+            content:
+                label: Content
+            action:
+                clone: clone
+                preview: preview
+            edit_entity: Edit product template "%name%"
+            saved:
+                message: Product Template Saved
+        publication:
+            entity_plural_label:   Publications  
+            entity_label: Publication
+            name:
+                label: Publication name  
+            description:
+                label: Description 
+            width:
+                label: Width
+            height:
+                label: Height
+            content:
+                label: Content
+            action:
+                clone: clone
+                preview: preview
+            edit_entity: Edit product template "%name%"
+            saved:
+                message: The Publication is Saved
+        pdftemplate:  
+            action:
+                clone: clone
+                preview: preview
+            close:
+                tab: close 
+            variable_title: '{{ variable_label }}. Click to insert variable or drag it.'
+            reference_title: '{{ variable_label }}. Click to go to related variables.'
+            edit_entity: Edit pdf template "%name%"
+            entity_plural_label: PDF Templates
+            saved:
+                message: PDF Template Saved
+            entity_label: PDF Template
+            entity_name:
+                label: Entity name
+            name:
+                label: Template name   
+            type:
+                label: Type 
+            is_system:
+                label: Is system 
+            owner:
+                label: Owner
+            variables:
+                system: System variables
+                entity: Entity variables
+            action:
+                preview: Preview
+            exportpdf:
+                download_type: Download PDF
+                attach_type: Send Email as Attached
+                choose_template: Choose Template
+                pdf_done : PDF were exported
+            frontend:
+                choose_template: Choose Default Template
+            description:
+                label: description
+            header:
+                choose:
+                   label: Choose header
+                label: header
+            footer:
+                choose:
+                   label: Choose footer
+                label: footer
+            css:
+                label: custom style css
+            auteur:
+                label: Auteur
+            unit:
+                label: Unit
+                point_label: point
+                millimeter_label: millimeter
+                centimeter_label: centimeter
+                inch_label: inch
+            direction:
+                label: Direction
+                ltr_label: LTR
+                rtl_label: RTL
+            font:
+                label: Font
+            format:
+                label: format
+            orientation:
+                label: orientation
+                portrait_label: portrait
+                landscape_label: landscape
+            margintop:
+                label: margin top 
+            marginbottom:
+                label: margin bottom
+            marginleft:
+                label: margin left
+            marginright:
+                label: margin right
+            hf:
+                label: use global header and footer
+            autobreak:
+                label: auto break
+                no_label: no
+                yes_label: yes
+
