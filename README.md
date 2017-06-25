@@ -6,7 +6,7 @@ Our Ibnab team created a new taymiya project 'PDF Manager' for Oro Tech, create 
 3. Download PDF
 4. Send PDF by Email as attachement
 
-# now you can create PDF ..
+# Now you can create PDF ..
 
 For more resource and courses About OroCRM visit Our blog :
 http://www.taymiya.com
