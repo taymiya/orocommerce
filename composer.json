@@ -1,12 +1,12 @@
 {
-    "name": "ibnab/orocrm-pdfmanager",
-    "description": "Ibnab PDF Manager",
-    "homepage": "https://github.com/ibnab/orocrm-pdfmanager.git",
+    "name": "taymiya/orocommerce",
+    "description": "Taymiya PDF Manager for OroCommerce",
+    "homepage": "https://github.com/taymiya/orocommerce.git",
     "license": "OSL-3.0",
     "authors": [
         {
-            "name": "Ibnab",
-            "homepage": "http://www.ibnab.com"
+            "name": "Taymiya",
+            "homepage": "http://www.taymiya.com"
         }
     ],
     "autoload": {
