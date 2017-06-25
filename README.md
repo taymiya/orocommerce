@@ -8,6 +8,6 @@ Our Ibnab team created a new taymiya project 'PDF Manager' for Oro Tech, create 
 
 # Now you can create PDF ..
 
-For more resource and courses About OroCRM visit Our blog :
+For more resource and courses About Taymiya project visit Our website :
 http://www.taymiya.com
 
