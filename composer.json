@@ -16,8 +16,7 @@
     },
     "target-dir": "src/Ibnab/Bundle/PmanagerBundle",
     "require": {
-        "php": ">=5.4.9",
-        "oro/crm": "1.x"
+        "php": ">=5.4.9"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
