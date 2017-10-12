@@ -43,6 +43,7 @@ class IbnabPmanagerBundle implements Migration
         $table->addColumn('css', 'text' , ['notnull' => false]);
         $table->addColumn('format', 'string', ['notnull' => false ,'length' => 4]);
         $table->addColumn('unit', 'string', ['notnull' => false ,'length' => 4]);
+        $table->addColumn('direction', 'string', ['notnull' => false ,'length' => 10]);  
         $table->addColumn('orientation', 'string', ['notnull' => false ,'length' => 2]);
         $table->addColumn('auteur', 'string', ['notnull' => false ,'length' => 30]);
         $table->addColumn('margintop', 'integer', ['notnull' => false]);
