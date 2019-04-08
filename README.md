@@ -1,4 +1,4 @@
-# Taymiya PDF Manager
+# Taymiya PDF Manager - OroCommerce 3 and higher
 Our Ibnab team created a new taymiya project 'PDF Manager' for Oro Tech, create pdf with template inside OroCommerce ,download or send by email , from grid or inside entity view 
 
 1. Create custom unlimited template and subtemplate for Pdf.
