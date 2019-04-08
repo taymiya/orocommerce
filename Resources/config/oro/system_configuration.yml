@@ -1,0 +1,131 @@
+system_configuration:
+    groups:
+        pdf_manager:
+            title: ibnab.pmanager.system_configuration.groups.title
+        pdf_manager_setting:
+            title: ibnab.pmanager.system_configuration.groups.settings.title
+            icon:  'fa-file'
+        pdf_manager_view:
+            title: ibnab.pmanager.system_configuration.groups.view.title
+        pdf_manager_frontend:
+            title: ibnab.pmanager.system_configuration.groups.frontend.title
+    fields:
+        ibnab_pmanager.allow:
+            data_type: array
+            type: 'Oro\Bundle\EntityBundle\Form\Type\EntityChoiceType'
+            priority: 70
+            options:
+                label: ibnab.pmanager.system_configuration.fields.allow.label
+                multiple: true
+        ibnab_pmanager.logo:
+            data_type: string
+            type: 'Oro\Bundle\ConfigBundle\Form\Type\ConfigFileType'
+            priority: 60
+            options:
+                label: ibnab.pmanager.system_configuration.fields.logo.label
+                resettable: false
+                required: false
+                fileConstraints:
+                    - Image: ~
+        ibnab_pmanager.logosize:
+            data_type: integer
+            type: 'Symfony\Component\Form\Extension\Core\Type\IntegerType'
+            priority: 50
+            options:
+                label: ibnab.pmanager.system_configuration.fields.logosize.label
+                constraints:
+                    - Range:
+                        min: 1
+                        max: 400
+        ibnab_pmanager.textheader:
+            data_type: string
+            type: 'Symfony\Component\Form\Extension\Core\Type\TextareaType'
+            priority: 40
+            options:
+                required: false
+                label: ibnab.pmanager.system_configuration.fields.textheader.label
+        ibnab_pmanager.titleheader:
+            data_type: string
+            type: 'Symfony\Component\Form\Extension\Core\Type\TextareaType'
+            priority: 30
+            options:
+                required: false
+                label: ibnab.pmanager.system_configuration.fields.titleheader.label
+        ibnab_pmanager.marginheader:
+            data_type: integer
+            type: 'Symfony\Component\Form\Extension\Core\Type\IntegerType'
+            priority: 20
+            options:
+                label: ibnab.pmanager.system_configuration.fields.marginheader.label
+                constraints:
+                    - Range:
+                        min: 1
+        ibnab_pmanager.marginfooter:
+            data_type: integer
+            type: 'Symfony\Component\Form\Extension\Core\Type\IntegerType'
+            priority: 10
+            options:
+                label: ibnab.pmanager.system_configuration.fields.marginfooter.label
+                constraints:
+                    - Range:
+                        min: 1
+        ibnab_pmanager.enablemultitemplate:
+            data_type: integer
+            type: 'Symfony\Component\Form\Extension\Core\Type\ChoiceType'
+            priority: 5
+            options:
+                label: ibnab.pmanager.system_configuration.fields.enablemultitemplate.label
+                required: false
+                choices:
+                    ibnab.pmanager.system_configuration.fields.enablemultitemplate.no.label: 0 
+                    ibnab.pmanager.system_configuration.fields.enablemultitemplate.yes.label: 1
+        ibnab_pmanager.defaultordertemplate:
+            data_type: string
+            type: 'Ibnab\Bundle\PmanagerBundle\Form\Type\FrontendPDFTemplateSelectType'
+            priority: 4
+            options:
+                label: ibnab.pmanager.system_configuration.fields.defaultordertemplate.label
+                attr:
+                    classPassed: Oro\Bundle\OrderBundle\Entity\Order
+        ibnab_pmanager.defaultquotetemplate:
+            data_type: string
+            type: 'Ibnab\Bundle\PmanagerBundle\Form\Type\FrontendPDFTemplateSelectType'
+            priority: 4
+            options:
+                label: ibnab.pmanager.system_configuration.fields.defaultquotetemplate.label
+                attr:
+                    classPassed: Oro\Bundle\SaleBundle\Entity\Quote
+        ibnab_pmanager.defaultrfqtemplate:
+            data_type: string
+            type: 'Ibnab\Bundle\PmanagerBundle\Form\Type\FrontendPDFTemplateSelectType'
+            priority: 4
+            options:
+                label: ibnab.pmanager.system_configuration.fields.defaultrfqtemplate.label
+                attr:
+                    classPassed: Oro\Bundle\RFPBundle\Entity\Request
+    tree:
+        system_configuration:
+            platform:
+                children:
+                    general_setup:
+                        children:
+                            pdf_manager_setting:
+                                priority: 400
+                                children:
+                                    pdf_manager_view:
+                                        priority: 600
+                                        children:
+                                            - ibnab_pmanager.allow
+                                            - ibnab_pmanager.logo
+                                            - ibnab_pmanager.logosize
+                                            - ibnab_pmanager.titleheader
+                                            - ibnab_pmanager.textheader
+                                            - ibnab_pmanager.marginheader
+                                            - ibnab_pmanager.marginfooter
+                                    pdf_manager_frontend:
+                                        priority: 500
+                                        children:
+                                            - ibnab_pmanager.enablemultitemplate
+                                            - ibnab_pmanager.defaultordertemplate
+                                            - ibnab_pmanager.defaultquotetemplate
+                                            - ibnab_pmanager.defaultrfqtemplate

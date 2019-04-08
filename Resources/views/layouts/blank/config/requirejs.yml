@@ -1,0 +1,3 @@
+config:
+    paths:
+        'oro/datagrid/action/getpdf-action': 'bundles/ibnabpmanager/js/datagrid/action/getpdf-action.js'

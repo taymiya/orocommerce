@@ -1,0 +1,13 @@
+{% extends 'OroUIBundle:actions:index.html.twig' %}
+{% import 'OroUIBundle::macros.html.twig' as UI %}
+{% set gridName = 'pmanager-producttemplates-grid' %}
+{% set pageTitle = 'ibnab.pmanager.producttemplate.entity_plural_label'|trans %}
+
+{% block navButtons %}
+    {% if resource_granted('pmanager_producttemplate_create') %}
+        {{ UI.addButton({
+            'path' : path('pmanager_producttemplate_create'),
+            'entity_label': 'ibnab.pmanager.producttemplate.entity_label'|trans
+        }) }}
+    {% endif %}
+{% endblock %}

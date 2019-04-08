@@ -1,0 +1,66 @@
+{% extends 'OroUIBundle:actions:update.html.twig' %}
+{% set pageComponent = {
+    'module': 'oroui/js/app/components/view-component',
+    'options': {'view': 'oroemail/js/app/views/email-template-editor-view'},
+    'layout': 'separate'
+} %}
+{% form_theme form with [
+    'OroFormBundle:Form:fields.html.twig',
+    'OroEmailBundle:Form:fields.html.twig',
+]%}
+{% import 'IbnabPmanagerBundle::macros.html.twig' as _pdftemplateMacros %}
+{% set formAction = form.vars.value.id
+    ? path('pmanager_publication_update', { id: form.vars.value.id })
+    : path('pmanager_publication_create')
+%}
+
+{% block navButtons %}
+    {% if resource_granted('pmanager_publication_preview') %}
+        {{ UI.button({
+            'path' :  path('pmanager_publication_preview', {'id': form.vars.value.id }),
+            'title' : 'ibnab.pmanager.publication.action.preview'|trans,
+            'label' : 'ibnab.pmanager.publication.action.preview'|trans,
+            'aCss': 'btn-success dialog-form-renderer no-hash',
+            'iCss': 'icon-share'
+        }) }}
+
+        {{ _pdftemplateMacros.renderPreviewDialog(form.vars.id, form.vars.value.name) }}
+    {% endif %}
+
+    {{ UI.cancelButton(path('pmanager_publication_index')) }}
+        {% set html = UI.saveAndCloseButton() %}
+        {% if form.vars.value.id or resource_granted('pmanager_publication_update') %}
+            {% set html = html ~ UI.saveAndStayButton() %}
+        {% endif %}
+        {{ UI.dropdownSaveButton({'html': html}) }}
+{% endblock navButtons %}
+
+
+{% block content_data %}
+    {% set id = 'publication-edit' %}
+
+    {% set dataBlocks = [
+        {
+            'title': 'General'|trans,
+            'class': 'active',
+            'subblocks': [{
+                'title': '',
+                'data': [
+                    form_row(form.name),
+                    form_row(form.description),
+                    form_row(form.width),
+                    form_row(form.height),
+                ]
+            }]
+        }     
+
+    ] %}
+    
+    {% set data = {
+        'formErrors': form_errors(form)? form_errors(form) : null,
+        'dataBlocks': dataBlocks,
+        }
+    %}
+
+    {{ parent() }}
+{% endblock content_data %}

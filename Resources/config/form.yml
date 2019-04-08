@@ -1,0 +1,151 @@
+parameters:
+    ibnab_pmanager.form.subscriber.pdftemplate.class:        Ibnab\Bundle\PmanagerBundle\Form\EventListener\BuildTemplateFormSubscriber
+    ibnab_pmanager.form.type.pdftemplate.class:              Ibnab\Bundle\PmanagerBundle\Form\Type\PDFTemplateType
+    ibnab_pmanager.form.type.producttemplate.class:              Ibnab\Bundle\PmanagerBundle\Form\Type\ProductTemplateType
+    ibnab_pmanager.form.type.publication.class:              Ibnab\Bundle\PmanagerBundle\Form\Type\PublicationType
+    ibnab_pmanager.form.type.pdftemplate_select.class:       Ibnab\Bundle\PmanagerBundle\Form\Type\PDFTemplateSelectType
+    ibnab_pmanager.form.type.frontendpdftemplate_select.class:       Ibnab\Bundle\PmanagerBundle\Form\Type\FrontendPDFTemplateSelectType
+    ibnab_pmanager.form.type.pdftemplate_translation.class:  Ibnab\Bundle\PmanagerBundle\Form\Type\PDFTemplateTranslationType
+    ibnab_pmanager.form.handler.pdftemplate.class:           Ibnab\Bundle\PmanagerBundle\Form\Handler\PDFTemplateHandler
+    ibnab_pmanager.form.handler.producttemplate.class:           Ibnab\Bundle\PmanagerBundle\Form\Handler\ProductTemplateHandler
+    ibnab_pmanager.form.handler.publication.class:           Ibnab\Bundle\PmanagerBundle\Form\Handler\PublicationHandler
+    ibnab_pmanager.form.handler.exportpdf.class:             Ibnab\Bundle\PmanagerBundle\Form\Handler\ExportPDFHandler
+    ibnab_pmanager.form.type.pdftemplate.api.class:          Ibnab\Bundle\PmanagerBundle\Form\Type\PDFTemplateApiType
+    ibnab_pmanager.form.type.producttemplate.api.class:          Ibnab\Bundle\PmanagerBundle\Form\Type\ProductTemplateApiType
+    ibnab_pmanager.form.type.exportpdf.class:                Ibnab\Bundle\PmanagerBundle\Form\Type\ExportPDFType
+    ibnab_pmanager.form.repository.pdftemplate.class:        Ibnab\Bundle\PmanagerBundle\Entity\Repository\PDFTemplateRepository
+    ibnab_pmanager.form.type.update.pdftemplate_select.class:  Ibnab\Bundle\PmanagerBundle\Form\Type\PDFTemplateUpdateSelectType
+services:
+    ibnab_pmanager.form.type.pdftemplate.api:
+        class: %ibnab_pmanager.form.type.pdftemplate.api.class%
+        arguments:
+            - '@oro_config.user'
+            - '@oro_locale.settings'
+    ibnab_pmanager.form.type.producttemplate.api:
+        class: %ibnab_pmanager.form.type.producttemplate.api.class%
+        arguments:
+            - '@oro_config.user'
+            - '@oro_locale.settings'
+    ibnab_pmanager.form.subscriber.pdftemplate:
+        class: %ibnab_pmanager.form.subscriber.pdftemplate.class%
+        arguments:
+            - '@security.token_storage'
+
+    ibnab_pmanager.form.pdftemplate:
+        class: Symfony\Component\Form\Form
+        factory: ['@form.factory', createNamed]
+        arguments: ["ibnab_pmanager_pdftemplate", Ibnab\Bundle\PmanagerBundle\Form\Type\PDFTemplateType, null]
+
+    ibnab_pmanager.form.publication:
+        class: Symfony\Component\Form\Form
+        factory: ['@form.factory', createNamed]
+        arguments: ["ibnab_pmanager_publication", Ibnab\Bundle\PmanagerBundle\Form\Type\PublicationType, null]
+        
+    ibnab_pmanager.form.producttemplate:
+        class: Symfony\Component\Form\Form
+        factory: ['@form.factory', createNamed]
+        arguments: ["ibnab_pmanager_producttemplate", Ibnab\Bundle\PmanagerBundle\Form\Type\ProductTemplateType, null]
+        
+    ibnab_pmanager.form.type.pdftemplate:
+        class: %ibnab_pmanager.form.type.pdftemplate.class%
+        arguments:
+            - '@oro_config.user'
+            - '@oro_locale.settings'
+        tags:
+            - { name: form.type, alias: ibnab_pmanager_pdftemplate }
+            
+    ibnab_pmanager.form.type.producttemplate:
+        class: %ibnab_pmanager.form.type.producttemplate.class%
+        arguments:
+            - '@oro_config.user'
+            - '@oro_locale.settings'
+        tags:
+            - { name: form.type, alias: ibnab_pmanager_producttemplate }
+            
+    ibnab_pmanager.form.type.publication:
+        class: %ibnab_pmanager.form.type.publication.class%
+        arguments:
+            - '@oro_config.user'
+            - '@oro_locale.settings'
+        tags:
+            - { name: form.type, alias: ibnab_pmanager_publication }
+            
+
+    ibnab_pmanager.form.type.pdftemplate_translation:
+        class: %ibnab_pmanager.form.type.pdftemplate_translation.class%
+        arguments:
+            - '@oro_config.user'
+            - 'Oro\Bundle\TranslationBundle\Form\Type\GedmoTranslationsType'
+        tags:
+            - { name: form.type, alias: ibnab_pmanager_pdftemplate_translatation }
+
+    ibnab_pmanager.form.type.pdftemplate_select:
+        class: %ibnab_pmanager.form.type.pdftemplate_select.class%
+        tags:
+            - { name: form.type, alias: ibnab_pmanager_pdftemplate_list }
+
+    ibnab_pmanager.form.type.frontendpdftemplate_select:
+        class: %ibnab_pmanager.form.type.frontendpdftemplate_select.class%
+        arguments:
+            - '@security.token_storage'
+            - '@ibnab_pmanager.form.repository.pdftemplate'
+        tags:
+            - { name: form.type, alias: ibnab_pmanager_frontendpdftemplate_list }
+            
+    ibnab_pmanager.form.type.update.pdftemplate_select:
+        class: %ibnab_pmanager.form.type.update.pdftemplate_select.class%
+        tags:
+            - { name: form.type, alias: ibnab_pmanager_pdftemplate_update_list }
+            
+    ibnab_pmanager.form.handler.pdftemplate:
+        class: %ibnab_pmanager.form.handler.pdftemplate.class%
+        scope: request
+        arguments:
+            - '@ibnab_pmanager.form.pdftemplate'  
+            - '@request_stack'
+            - '@doctrine.orm.entity_manager'
+            - '@translator'  
+            
+    ibnab_pmanager.form.handler.producttemplate:
+        class: %ibnab_pmanager.form.handler.producttemplate.class%
+        scope: request
+        arguments:
+            - '@ibnab_pmanager.form.producttemplate'  
+            - '@request_stack'
+            - '@doctrine.orm.entity_manager'
+            - '@translator'
+      
+    ibnab_pmanager.form.handler.publication:
+        class: %ibnab_pmanager.form.handler.publication.class%
+        scope: request
+        arguments:
+            - '@ibnab_pmanager.form.publication'  
+            - '@request_stack'
+            - '@doctrine.orm.entity_manager'
+            - '@translator'            
+    ibnab_pmanager.form.handler.exportpdf:
+        class: %ibnab_pmanager.form.handler.exportpdf.class%
+        scope: request
+        arguments: 
+            - '@request_stack'
+            - '@ibnab_pmanager.form.repository.pdftemplate'
+    ibnab_pmanager.form.repository.pdftemplate:
+        class: %ibnab_pmanager.form.repository.pdftemplate.class%
+        parent: oro_entity.abstract_repository
+        arguments:
+            - Ibnab\Bundle\PmanagerBundle\Entity\PDFTemplate
+    ibnab_pmanager.form.type.exportpdf:
+        class: %ibnab_pmanager.form.type.exportpdf.class%
+        arguments:
+            - '@security.token_storage'
+            - '@request_stack'
+        tags:
+            - { name: form.type, alias: ibnab_pmanager_exportpdf }
+        calls:
+            - [setFrontendHelper,["@oro_frontend.request.frontend_helper"]]           
+    ibnab_pmanger.form.type.product_template_select:
+        class: 'Ibnab\Bundle\PmanagerBundle\Form\Type\ProductTemplateSelectType'
+        arguments:
+            - "@translator"
+        tags:
+            - { name: form.type, alias: ibnab_product_template_select }            

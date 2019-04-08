@@ -1,0 +1,13 @@
+{% extends 'OroUIBundle:actions:index.html.twig' %}
+{% import 'OroUIBundle::macros.html.twig' as UI %}
+{% set gridName = 'pmanager-publication-grid' %}
+{% set pageTitle = 'ibnab.pmanager.publication.entity_plural_label'|trans %}
+
+{% block navButtons %}
+    {% if resource_granted('pmanager_publication_create') %}
+        {{ UI.addButton({
+            'path' : path('pmanager_publication_create'),
+            'entity_label': 'ibnab.pmanager.publication.entity_label'|trans
+        }) }}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,57 @@
+navigation:
+    menu_config:
+        items:
+            pmanager_tab:
+                label: 'ibnab.pmanager.entity_label'  
+                uri:   '#'
+                extras:
+                    position: 50
+            pmanager_tab_template:
+                label: 'ibnab.pmanager.entity_template_plural_label'
+                route: pmanager_template_index
+                extras:
+                    routes: ['/^ibnab_pmanager_*/']
+                    description: 'ibnab.pmanager.menu.template_list.description'
+            pmanager_tab_logs:
+                label: 'ibnab.pmanager.entity_logs_plural_label'
+                route: pmanager_logs_index
+                extras:
+                    routes: ['/^ibnab_pmanager_*/']
+                    description: 'ibnab.pmanager.menu.template_list.description'
+            pmanager_catalog_pdf:
+                label:   'ibnab.pmanager.catalogpdf.entity_plural_label'
+                uri:   '#'
+                extras:
+                    position: 70
+            pmanager_catalog_product:
+                label:   'ibnab.pmanager.producttemplate.entity_plural_label'
+                route:   'pmanager_producttemplate_index'
+                extras:
+                    routes:      ['/^pmanager_producttemplate_index$/']
+                    position:    50
+                    description: 'ibnab.pmanager.producttemplate.entity_plural_label'
+            pmanager_catalog_publication:
+                label:   'ibnab.pmanager.publication.entity_plural_label'
+                route:   'pmanager_publication_index'
+                extras:
+                    routes:      ['/^pmanager_publication_index$/']
+                    position:    50
+                    description: 'ibnab.pmanager.publication.entity_plural_label'
+        tree:
+            application_menu:
+                children:
+                    marketing_tab:
+                        children:
+                            pmanager_catalog_pdf:
+                                children:
+                                    pmanager_catalog_product: ~
+                                    pmanager_catalog_publication: ~
+                    system_tab:
+                        children:
+                            pmanager_tab:
+                                children:
+                                    pmanager_tab_template: ~
+                                    pmanager_tab_logs: ~
+    titles:
+        pmanager_template_index:    ~
+        pmanager_logs_index:    ~
