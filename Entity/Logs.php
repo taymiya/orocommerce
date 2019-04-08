@@ -100,7 +100,7 @@ class Logs
     /**
      * @var string
      *
-     * @ORM\Column(name="realname", type="text", nullable=true)
+     * @ORM\Column(name="realname", type="string", length=255, nullable=true)
      * @JMS\Type("string")
      * @JMS\Expose
      */

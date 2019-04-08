@@ -36,7 +36,7 @@ class IbnabPmanagerBundle implements Migration
         $table->addColumn('entityName', 'string', ['length' => 255]);
         $table->addColumn('side', 'string', ['length' => 45]);
         $table->addColumn('type', 'string', ['length' => 10]);
-        $table->addColumn('realname', 'text', ['length' => 10]);
+        $table->addColumn('realname', 'string', ['length' => 255,'notnull' => false]);
         $table->addColumn('filename', 'text', ['notnull' => false]);
         $table->addColumn('filepath', 'text', ['notnull' => false]);
         $table->addColumn('templateId', 'integer', ['notnull' => false]);
